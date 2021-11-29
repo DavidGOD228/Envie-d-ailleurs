@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#26a0e0;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px}
+        </style>
+    </defs>
+    <g id="Groupe_1172" data-name="Groupe 1172" transform="translate(-48 -32)">
+        <circle id="Ellipse_3" data-name="Ellipse 3" cx="25" cy="25" r="25" transform="translate(48 32)" style="fill:#fff"/>
+        <g id="Icon_feather-shopping-cart" data-name="Icon feather-shopping-cart" transform="translate(55.5 42.287)">
+            <path id="Tracé_1" data-name="Tracé 1" class="cls-2" d="M14.517 31.258A1.258 1.258 0 1 1 13.258 30a1.258 1.258 0 0 1 1.259 1.258z" transform="translate(-1.691 -4.591)"/>
+            <path id="Tracé_2" data-name="Tracé 2" class="cls-2" d="M31.017 31.258A1.258 1.258 0 1 1 29.758 30a1.258 1.258 0 0 1 1.259 1.258z" transform="translate(-4.349 -4.591)"/>
+            <path id="Tracé_3" data-name="Tracé 3" class="cls-2" d="M1.5 1.5h5.033l3.373 16.85a2.517 2.517 0 0 0 2.517 2.026h12.231a2.517 2.517 0 0 0 2.517-2.026l2.013-10.558H7.792"/>
+        </g>
+    </g>
+</svg>
