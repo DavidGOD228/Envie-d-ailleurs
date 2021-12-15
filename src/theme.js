@@ -7,6 +7,10 @@ export const THEME = {
     sapphire: '#1a41aa',
     tangerine: '#ff8900',
     green: '#5bb500',
+    yellow: '#ff9300',
+    red: '#FF0000',
+    primary: '#ae8168',
+    grey: '#707070',
   },
   FONTS: {
     mainTitle: 'Poppins-Bold',

@@ -16,9 +16,15 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+
     "ios": {
+      "buildNumber": "2",
       "supportsTablet": true,
-      "requireFullScreen": true
+      "requireFullScreen": true,
+      "bundleIdentifier": "envie-d-ailleurs",
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {

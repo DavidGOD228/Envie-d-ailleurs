@@ -1,6 +1,6 @@
 import { THEME } from './theme';
 
-export const TEXT_TEMPLATES = {
+export const STRINGS = {
   ON_BOARDING: {
     title: `Envie d'Ailleurs?`,
     subTitle: `Cela tombe bien ! Nous sommes là pour ça !`,
@@ -13,6 +13,21 @@ export const TEXT_TEMPLATES = {
     description:
       'Naviguez sur la carte et cliquez sur l’un des POI pour voir apparaître son détail',
   },
+  VISITED: {
+    title: 'LISTE DES VISITES',
+    salePerson: 'Nom du commercial',
+    customerDetails: 'Coordonnées client',
+    company: 'Entreprise / Comité d’entreprise / Association',
+    nameSurname: 'Nom et prénom du responsable',
+    postcode: 'Code postal',
+    address: 'Adresse',
+    phone: 'Téléphone',
+    city: 'Ville',
+    email: 'E-mail',
+    note: 'Note',
+    register: 'ENREGISTRER',
+    apply: 'EN SAVOIR PLUS',
+  },
 };
 
 export const ROUTES = {
@@ -20,26 +35,27 @@ export const ROUTES = {
   ON_BOARDING: 'OnBoarding',
   DETAILS: 'Details',
   ORDER: 'Order',
+  VISITES: 'Visites',
 };
 
 export const searchTypes = [
   {
-    id: 'cities',
+    id: 'town',
     color: THEME.COLORS.barney,
     value: 'Villes',
   },
   {
-    id: 'visits',
+    id: 'visit',
     color: THEME.COLORS.sapphire,
     value: 'Visites',
   },
   {
-    id: 'hotels',
+    id: 'hotel',
     color: THEME.COLORS.tangerine,
     value: 'Hôtels',
   },
   {
-    id: 'restaurants',
+    id: 'restaurant',
     color: THEME.COLORS.green,
     value: 'Restaurants',
   },
