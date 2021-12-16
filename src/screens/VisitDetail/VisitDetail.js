@@ -28,7 +28,12 @@ export const VisitDetail = ({ navigation, route }) => {
       <SideBar navigation={navigation} />
       <View style={styles.wrapper}>
         <Text style={styles.title}>{location.name}</Text>
-        {!!location?.images?.length && <PhotoSlider images={location.images} />}
+
+        {!!location?.images?.length && (
+          <View>
+            <PhotoSlider images={location.images} />
+          </View>
+        )}
         <View style={styles.priceWrapper}>
           <Text style={styles.priceTitle}>Tarif</Text>
           <Text style={styles.price}>À partir de 25€/ personne</Text>

@@ -69,7 +69,7 @@ export const MainUserScreen = ({ navigation }) => {
   };
 
   const getFilterByType = (filters) => {
-    return locations.filter((location) => filters.includes(location.type));
+    return locations.filter((location) => !filters.includes(location.type));
   };
 
   const getFilterByName = (searchedText) => {

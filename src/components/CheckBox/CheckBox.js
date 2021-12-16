@@ -12,7 +12,7 @@ export const CheckBox = ({ item, isChecked, onUserPress }) => {
         onPress={checkBoxPressHandler}
         style={[
           styles.checkBox,
-          isChecked ? styles.containerLeft : styles.containerRight,
+          isChecked ? styles.containerRight : styles.containerLeft,
         ]}
       >
         <View style={[styles.innerContainer, { backgroundColor: color }]} />

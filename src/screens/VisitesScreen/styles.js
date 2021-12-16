@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   },
 
   form: {
-    maxWidth: 600,
+    maxWidth: 589,
     overflow: 'hidden',
   },
   title: {
@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   button: {
-    width: 293,
+    width: 290,
     height: 48,
     backgroundColor: THEME.COLORS.yellow,
     borderRadius: 50,

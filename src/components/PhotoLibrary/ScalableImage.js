@@ -5,7 +5,6 @@ import { styles } from './styles';
 export const ScalableImage = ({ url }) => {
   const [width, setWidth] = useState(200);
   Image.getSize(url, (width) => {
-    console.log(width);
     setWidth(width);
   });
   return (

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { AsyncStorage } from 'react-native';
 import { getPoi, order } from '../../api/actions';
 import { parseLocations } from '../../helpers/functions';
+import { Alert } from 'react-native-web';
+import { STRINGS } from '../../constants';
 
 const AppContext = React.createContext({});
 
@@ -54,12 +56,22 @@ export const AppContextProvider = (props) => {
 
   const handleCreateOrder = (res) => {
     if (res?.code === 200) {
+      showSuccessAlert();
       setCardIds([]);
       setCheckboxChecked([]);
       AsyncStorage.setItem('cart', JSON.stringify([]));
       return true;
     }
     return false;
+  };
+
+  const showSuccessAlert = () => {
+    Alert.alert(STRINGS.VISITED.success);
+  };
+
+  const removeLocationsFromSelected = (id) => {
+    cardIds.splice(id, 1);
+    setCardIds([...cardIds]);
   };
 
   const handleAddToCart = (id) => {
@@ -78,6 +90,7 @@ export const AppContextProvider = (props) => {
         checkboxChecked,
         setCheckboxChecked,
         handleAddToCart,
+        removeLocationsFromSelected,
       }}
     >
       {props.children}

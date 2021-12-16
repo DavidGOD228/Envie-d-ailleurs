@@ -11,13 +11,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     zIndex: 10,
     marginLeft: 300,
+    maxWidth: 880,
+    alignSelf: 'center',
   },
-  center: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
   form: {
     maxWidth: 600,
     overflow: 'hidden',
@@ -67,6 +63,8 @@ export const styles = StyleSheet.create({
     fontStyle: 'normal',
     textAlign: 'left',
     marginTop: 31,
+    width: '100%',
+    marginRight: 10,
   },
   priceWrapper: {
     justifyContent: 'flex-end',
@@ -74,6 +72,7 @@ export const styles = StyleSheet.create({
     textAlign: 'right',
     width: '100%',
     marginTop: 21,
+    marginRight: 20,
   },
   priceTitle: {
     color: THEME.COLORS.primary,

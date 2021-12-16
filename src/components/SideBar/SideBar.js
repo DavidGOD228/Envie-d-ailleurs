@@ -6,6 +6,7 @@ import {
   Text,
   Dimensions,
   Keyboard,
+  Alert,
 } from 'react-native';
 import { styles } from './styles';
 import CartIcon from '../../../assets/cart.svg';
@@ -55,6 +56,8 @@ export const SideBar = ({
   const handleOpenCart = () => {
     if (cardIds.length) {
       navigation.navigate(ROUTES.VISITES);
+    } else {
+      Alert.alert('Veuillez ajouter Poi');
     }
   };
   return (

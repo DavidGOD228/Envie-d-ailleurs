@@ -27,6 +27,7 @@ export const STRINGS = {
     note: 'Note',
     register: 'ENREGISTRER',
     apply: 'EN SAVOIR PLUS',
+    success: 'Votre demande a bien été transmise',
   },
 };
 

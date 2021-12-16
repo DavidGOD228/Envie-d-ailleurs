@@ -1,18 +1,33 @@
-import React, { createRef } from 'react';
-import { View, FlatList, Image, TouchableOpacity } from 'react-native';
+import React, { createRef, useState, useEffect } from 'react';
+import {
+  View,
+  FlatList,
+  Image,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 import { styles } from './styles';
 import LeftArrow from '../../../assets/sliderLeftArrow.svg';
 import { getImageUrl } from '../../helpers/functions';
+import ImageModal from 'react-native-image-modal';
 
 const offset = 220;
+
+const { width } = Dimensions.get('window');
 
 export const PhotoSlider = ({ images }) => {
   const listRef = createRef(null);
   const scroolCoordinates = createRef(null);
-
+  const [isHideArrow, setIsHideArrow] = useState(false);
   const renderItem = ({ item }) => {
-    return <Image style={styles.image} source={{ url: getImageUrl(item) }} />;
+    return (
+      <ImageModal style={styles.image} source={{ url: getImageUrl(item) }} />
+    );
   };
+
+  useEffect(() => {
+    setIsHideArrow(images && offset * images.length < width - 320);
+  }, [images]);
 
   const keyExtractor = ({ index }) => {
     return index;
@@ -52,7 +67,7 @@ export const PhotoSlider = ({ images }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={handleLeft}>
-        <LeftArrow style={styles.arrow} />
+        <LeftArrow style={[styles.arrow, isHideArrow && styles.hide]} />
       </TouchableOpacity>
       <FlatList
         ref={listRef}
@@ -62,9 +77,12 @@ export const PhotoSlider = ({ images }) => {
         keyExtractor={keyExtractor}
         showsHorizontalScrollIndicator={false}
         onScrollEndDrag={handleScroll}
+        con
       />
       <TouchableOpacity onPress={handleRight}>
-        <LeftArrow style={[styles.arrow, styles.rightArrow]} />
+        <LeftArrow
+          style={[styles.arrow, styles.rightArrow, isHideArrow && styles.hide]}
+        />
       </TouchableOpacity>
     </View>
   );

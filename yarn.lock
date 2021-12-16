@@ -5661,6 +5661,11 @@ react-native-htmlview@^0.16.0:
     entities "^1.1.1"
     htmlparser2-without-node-native "^3.9.2"
 
+react-native-image-modal@1.0.16:
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/react-native-image-modal/-/react-native-image-modal-1.0.16.tgz#d250906cd741358edb7d39afd5ce69e9e44300e1"
+  integrity sha512-wDA3CVFQMfKaKM5VbkAzE/3OGUnP8zspshlPVA3gEUyqXFln+ix9f8QF4v+JMLwYpXb8SghK9ACTVsBC+ay1ew==
+
 react-native-map-clustering@^3.4.2:
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/react-native-map-clustering/-/react-native-map-clustering-3.4.2.tgz#9ecdd489bfd7f22fc558f48c2b7a3e8a1807933f"

@@ -25,7 +25,8 @@ export const VisitesScreen = ({ navigation }) => {
   const [locations, setLocations] = useState([]);
   const { createOrder, isLoading } = useContext(AppContext);
 
-  const { cardIds, getLocationById } = useContext(AppContext);
+  const { cardIds, getLocationById, removeLocationsFromSelected } =
+    useContext(AppContext);
 
   const submit = async (values) => {
     const result = await createOrder(values);
@@ -49,7 +50,11 @@ export const VisitesScreen = ({ navigation }) => {
       locations.push(getLocationById(id));
     });
     setLocations(locations);
-  }, []);
+
+    if (cardIds.length === 0) {
+      navigation.goBack();
+    }
+  }, [cardIds]);
 
   const scrollToBottom = () => {
     if (scrollRef.current) {
@@ -74,9 +79,10 @@ export const VisitesScreen = ({ navigation }) => {
                 return (
                   <InfoItem
                     key={`${location?.id}-${index}`}
-                    title={location.name}
+                    title={location.id}
                     description={location.description}
                     image={location.image_first}
+                    onRemove={() => removeLocationsFromSelected(index)}
                   />
                 );
               }
@@ -139,7 +145,7 @@ export const VisitesScreen = ({ navigation }) => {
                 value={values.city}
                 error={errors.city}
                 touched={touched.city}
-                width={184}
+                width={199}
               />
             </View>
             <View style={styles.row}>
@@ -169,7 +175,7 @@ export const VisitesScreen = ({ navigation }) => {
               value={values.note}
               error={errors.note}
               touched={touched.note}
-              width={590}
+              width={588}
               multiline={true}
               textarea
               onFocus={scrollToBottom}

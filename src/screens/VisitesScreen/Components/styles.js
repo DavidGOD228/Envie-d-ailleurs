@@ -15,12 +15,18 @@ export const styles = StyleSheet.create({
     fontFamily: THEME.FONTS.regular,
     marginTop: 8,
     maxHeight: 100,
-    overflow: 'hidden',
     marginBottom: 20,
+    width: '100%',
+    maxWidth: 500,
+  },
+  wrapper: {
+    width: '100%',
+    maxWidth: 500,
   },
   row: {
     flexDirection: 'row',
     zIndex: 2,
+    width: '100%',
   },
   image: {
     width: 70,
@@ -33,5 +39,13 @@ export const styles = StyleSheet.create({
   border: {
     borderColor: THEME.COLORS.primary,
     borderBottomWidth: 1,
+  },
+  removeIcon: {
+    position: 'absolute',
+    right: 0,
+    top: 15,
+    width: 40,
+    height: 40,
+    zIndex: 3,
   },
 });
