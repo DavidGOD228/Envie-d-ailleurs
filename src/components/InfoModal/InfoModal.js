@@ -46,7 +46,7 @@ export const InfoModal = ({ item, isVisible, setIsVisible }) => {
           <Close />
         </View>
 
-        {!!url && <Image style={styles.image} source={{ url }} />}
+        {!!url && <Image style={styles.image} source={{ uri: url }} />}
         <View style={[styles.title, styles.description]}>
           <HTMLView value={description} />
         </View>

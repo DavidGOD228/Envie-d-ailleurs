@@ -10,13 +10,17 @@ import { styles } from './styles';
 import MarkerSvg from '../../components/Svg/MarkerSvg';
 import { InfoModal } from '../../components/InfoModal/InfoModal';
 import AppContext from '../../context/AppContext/AppContext';
-import { getImageUrl, getMarkerColor } from '../../helpers/functions';
+import {
+  getImageUrl,
+  getMarkerColor,
+  isAndroid,
+} from '../../helpers/functions';
 
 const INITIAL_REGION = {
-  latitude: 5.50074,
-  longitude: 43.29937,
-  latitudeDelta: 0,
-  longitudeDelta: 0,
+  latitude: 42.5,
+  longitude: 15.2,
+  latitudeDelta: isAndroid ? 20 : 0,
+  longitudeDelta: isAndroid ? 20 : 0,
 };
 
 const FILTER_TYPES = {
@@ -96,7 +100,6 @@ export const MainUserScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor={THEME.COLORS.white} />
       <SideBar
         navigation={navigation}
         onFilter={(filters) => handleFilter(filters, FILTER_TYPES.type)}

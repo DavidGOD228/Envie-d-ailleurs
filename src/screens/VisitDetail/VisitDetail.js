@@ -24,7 +24,6 @@ export const VisitDetail = ({ navigation, route }) => {
 
   return (
     <View style={styles.flex}>
-      <StatusBar backgroundColor={THEME.COLORS.white} />
       <SideBar navigation={navigation} />
       <ScrollView style={styles.container}>
         <View style={styles.wrapper}>

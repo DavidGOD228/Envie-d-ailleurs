@@ -1,4 +1,5 @@
 import { imageUrl } from '../config/config';
+import { Platform } from 'react-native';
 export const parseLocations = (data) => {
   return data.map((loc) => ({
     latitude: loc.data.lat,
@@ -6,6 +7,8 @@ export const parseLocations = (data) => {
     ...loc.data,
   }));
 };
+
+export const isAndroid = Platform.OS === 'android';
 
 export const getImageUrl = (name) => imageUrl + name;
 

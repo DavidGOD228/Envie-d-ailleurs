@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { View, TouchableOpacity, AsyncStorage, Alert } from 'react-native';
 import Button from '../../../assets/addButton.svg';
+import PlusButton from '../../components/Svg/PlusButton';
 import { styles } from './styles';
 import AppContext from '../../context/AppContext/AppContext';
 import { storageValues } from '../../constants';
@@ -21,7 +22,7 @@ export const AddButton = ({ id }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={handleAdd}>
-        <Button />
+        <PlusButton />
       </TouchableOpacity>
     </View>
   );

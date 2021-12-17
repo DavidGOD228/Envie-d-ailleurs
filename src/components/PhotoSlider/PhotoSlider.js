@@ -22,7 +22,7 @@ export const PhotoSlider = ({ images }) => {
   const [isHideArrow, setIsHideArrow] = useState(false);
   const renderItem = ({ item }) => {
     return (
-      <ImageModal style={styles.image} source={{ url: getImageUrl(item) }} />
+      <ImageModal style={styles.image} source={{ uri: getImageUrl(item) }} />
     );
   };
 

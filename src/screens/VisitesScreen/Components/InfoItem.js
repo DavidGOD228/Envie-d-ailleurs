@@ -16,7 +16,7 @@ export const InfoItem = ({ image, title, description, onRemove }) => {
         </View>
       </TouchableWithoutFeedback>
       <View style={styles.row}>
-        {!!image && <Image style={styles.image} source={{ url }} />}
+        {!!image && <Image style={styles.image} source={{ uri: url }} />}
         <View>
           <Text style={styles.title}>{title}</Text>
           <View style={[styles.title, styles.description]}>

@@ -19,6 +19,7 @@ import { BackButton } from '../../components/BackButton/BackButton';
 import AppContext from '../../context/AppContext/AppContext';
 import { styles } from './styles';
 import { InfoItem } from './Components/InfoItem';
+import { isAndroid } from '../../helpers/functions';
 
 export const VisitesScreen = ({ navigation }) => {
   const scrollRef = useRef(null);
@@ -63,10 +64,9 @@ export const VisitesScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.flex}>
-      <StatusBar backgroundColor={THEME.COLORS.white} />
+    <View>
       <SideBar navigation={navigation} isHideAll />
-      <KeyboardAvoidingView behavior={'padding'} style={styles.flex}>
+      <KeyboardAvoidingView behavior={isAndroid ? null : 'padding'}>
         <ScrollView
           style={styles.container}
           ref={scrollRef}

@@ -7,7 +7,6 @@ export const styles = StyleSheet.create({
   container: {},
   formWrapper: {
     width: windowWidth - 400,
-    justifyContent: 'center',
     alignItems: 'center',
     zIndex: 2,
     marginLeft: 350,

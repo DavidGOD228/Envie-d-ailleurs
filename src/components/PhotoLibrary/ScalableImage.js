@@ -11,7 +11,7 @@ export const ScalableImage = ({ url }) => {
     <Image
       style={[styles.image, { width }]}
       resizeMode={'cover'}
-      source={{ url, width }}
+      source={{ uri: url, width }}
     />
   );
 };

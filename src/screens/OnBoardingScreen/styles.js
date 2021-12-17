@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     paddingVertical: 83,
     zIndex: 2,
+    elevation: 2,
   },
   title: {
     width: 365,
@@ -53,6 +54,8 @@ export const styles = StyleSheet.create({
     paddingVertical: 16,
     borderRadius: 30,
     backgroundColor: THEME.COLORS.mainColor,
+    elevation: 4,
+    zIndex: 10,
   },
   button: {
     flex: 1,

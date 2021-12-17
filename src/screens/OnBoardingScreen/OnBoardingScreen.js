@@ -20,10 +20,9 @@ export const OnBoardingScreen = ({ navigation }) => {
             {STRINGS.ON_BOARDING.description}
           </Text>
         </View>
-        <Button
-          onPress={buttonClickHandler}
-          text={STRINGS.ON_BOARDING.button}
-        />
+        <View onTouchStart={buttonClickHandler} style={{ elevation: 10 }}>
+          <Button onPress={() => {}} text={STRINGS.ON_BOARDING.button} />
+        </View>
         <View style={styles.logoContainer}>
           <Logo style={styles.logo} />
         </View>
