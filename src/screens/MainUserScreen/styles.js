@@ -1,7 +1,7 @@
 import { Dimensions, StyleSheet } from 'react-native';
 import { THEME } from '../../theme';
 
-const { height, width } = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
   container: {
@@ -16,7 +16,6 @@ export const styles = StyleSheet.create({
   },
   map: {
     marginLeft: 250,
-    backgroundColor: 'red',
     height: height,
   },
 });

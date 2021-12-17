@@ -8,6 +8,7 @@ import {
   Keyboard,
   Alert,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { styles } from './styles';
 import CartIcon from '../../../assets/cart.svg';
 import Logo from '../../../assets/logo.svg';
@@ -15,8 +16,9 @@ import { STRINGS, searchTypes, ROUTES } from '../../constants';
 import { CheckBox } from '../CheckBox/CheckBox';
 import { Badge } from '../Badge/Badge';
 import SideBackground from '../Svg/SideBackground';
+import Clear from '../Svg/Close';
 import AppContext from '../../context/AppContext/AppContext';
-import { useNavigation } from '@react-navigation/native';
+import { THEME } from '../../theme';
 
 export const SideBar = ({
   isHideAll,
@@ -24,6 +26,7 @@ export const SideBar = ({
   onSearch = () => {},
 }) => {
   const [text, onChangeText] = useState('');
+  const isShowClearButton = text.length > 0;
   const { cardIds, checkboxChecked, setCheckboxChecked } =
     useContext(AppContext);
   const windowHeight = Dimensions.get('window').height;
@@ -60,6 +63,12 @@ export const SideBar = ({
       Alert.alert('Veuillez ajouter Poi');
     }
   };
+
+  const handleClearText = () => {
+    handleTextChange('');
+    Keyboard.dismiss();
+  };
+
   return (
     <View style={styles.container}>
       {!isHideAll && (
@@ -72,11 +81,17 @@ export const SideBar = ({
           </TouchableOpacity>
 
           <View style={styles.inputContainer}>
+            {isShowClearButton && (
+              <TouchableOpacity onPress={handleClearText}>
+                <Clear width={20} style={styles.clearIcon} />
+              </TouchableOpacity>
+            )}
             <TextInput
               style={styles.input}
               value={text}
               onChangeText={handleTextChange}
               placeholder={STRINGS.SIDE_BAR.input}
+              placeholderTextColor={THEME.COLORS.mainColor}
             />
 
             <TouchableOpacity
@@ -112,7 +127,7 @@ export const SideBar = ({
           </View>
         </View>
       )}
-      <SideBackground style={[styles.container, { width: '100%' }]} />
+      <SideBackground style={styles.bgImage} />
     </View>
   );
 };

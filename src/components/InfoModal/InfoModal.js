@@ -51,10 +51,9 @@ export const InfoModal = ({ item, isVisible, setIsVisible }) => {
           <HTMLView value={description} />
         </View>
 
-        <View style={styles.buttonWrapper}>
+        <View style={styles.buttonWrapper} onTouchStart={handleOpenScreen}>
           <Button
             text={STRINGS.VISITED.apply}
-            onPress={handleOpenScreen}
             containerStyle={styles.buttonContainer}
           />
         </View>

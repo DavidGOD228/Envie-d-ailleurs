@@ -8,6 +8,13 @@ export const styles = StyleSheet.create({
     left: 0,
     zIndex: 1,
   },
+  bgImage: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    zIndex: 1,
+    width: '100%',
+  },
   image: {
     resizeMode: 'contain',
     height: 2104,
@@ -84,5 +91,8 @@ export const styles = StyleSheet.create({
   badgeWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  clearIcon: {
+    marginLeft: -15,
   },
 });

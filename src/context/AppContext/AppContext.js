@@ -3,7 +3,7 @@ import { AsyncStorage } from 'react-native';
 import { getPoi, order } from '../../api/actions';
 import { parseLocations } from '../../helpers/functions';
 import { Alert } from 'react-native-web';
-import { STRINGS } from '../../constants';
+import { storageValues, STRINGS } from '../../constants';
 
 const AppContext = React.createContext({});
 
@@ -19,16 +19,15 @@ export const AppContextProvider = (props) => {
   }, []);
 
   const initOrderCount = async () => {
-    const cart = await AsyncStorage.getItem('cart');
-
-    try {
-      if (cart) {
+    const cart = await AsyncStorage.getItem(storageValues.cart);
+    if (cart) {
+      try {
         setCardIds(JSON.parse(cart));
-      } else {
+      } catch (e) {
+        console.warn(e);
         setCardIds([]);
       }
-    } catch (e) {
-      console.warn(e);
+    } else {
       setCardIds([]);
     }
   };
@@ -59,7 +58,7 @@ export const AppContextProvider = (props) => {
       showSuccessAlert();
       setCardIds([]);
       setCheckboxChecked([]);
-      AsyncStorage.setItem('cart', JSON.stringify([]));
+      AsyncStorage.setItem(storageValues.cart, JSON.stringify([]));
       return true;
     }
     return false;

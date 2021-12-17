@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
     marginLeft: 350,
     marginTop: 50,
     height: '100%',
+    marginBottom: 160,
   },
   center: {
     flex: 1,
@@ -61,5 +62,8 @@ export const styles = StyleSheet.create({
   },
   singleTitle: {
     marginBottom: 8,
+  },
+  flex: {
+    flex: 1,
   },
 });

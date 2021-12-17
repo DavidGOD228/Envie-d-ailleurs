@@ -3,7 +3,6 @@ import { THEME } from '../../theme';
 export const styles = StyleSheet.create({
   modal: {
     width: 300,
-
     shadowColor: 'black',
     shadowOpacity: 0.26,
     shadowOffset: { width: 0, height: 2 },

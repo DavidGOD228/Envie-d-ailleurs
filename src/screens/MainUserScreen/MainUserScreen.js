@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { SafeAreaView, StatusBar } from 'react-native';
+import { SafeAreaView, StatusBar, LayoutAnimation } from 'react-native';
 import Constants from 'expo-constants';
 import MapView from 'react-native-map-clustering';
 import { Marker } from 'react-native-maps';
@@ -7,7 +7,7 @@ import { Marker } from 'react-native-maps';
 import { SideBar } from '../../components/SideBar/SideBar';
 import { THEME } from '../../theme';
 import { styles } from './styles';
-import MarkerSvg from '../../components/MarkerSvg/MarkerSvg';
+import MarkerSvg from '../../components/Svg/MarkerSvg';
 import { InfoModal } from '../../components/InfoModal/InfoModal';
 import AppContext from '../../context/AppContext/AppContext';
 import { getImageUrl, getMarkerColor } from '../../helpers/functions';
@@ -23,6 +23,16 @@ const FILTER_TYPES = {
   type: 'type',
   name: 'name',
 };
+
+const edgePadding = { top: 150, left: 150, bottom: 150, right: 150 };
+const valueForSearch = [
+  'name',
+  'description',
+  'city',
+  'country',
+  'address',
+  'postal',
+];
 
 export const MainUserScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -74,11 +84,7 @@ export const MainUserScreen = ({ navigation }) => {
 
   const getFilterByName = (searchedText) => {
     return locations.filter((location) =>
-      searchByFields(
-        location,
-        ['name', 'description', 'city', 'country', 'address', 'postal'],
-        searchedText
-      )
+      searchByFields(location, valueForSearch, searchedText)
     );
   };
 
@@ -98,6 +104,8 @@ export const MainUserScreen = ({ navigation }) => {
       />
       <MapView
         initialRegion={INITIAL_REGION}
+        edgePadding={edgePadding}
+        layoutAnimationConf={LayoutAnimation.Presets.easeInEaseOut}
         style={[styles.map, { marginTop: -Constants.statusBarHeight }]}
       >
         {filteredLocations.map((item, index) => {

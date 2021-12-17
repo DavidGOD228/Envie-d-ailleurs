@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     fontSize: 11,
     fontStyle: 'normal',
     textAlign: 'left',
-    color: '#ae8168',
+    color: THEME.COLORS.primary,
     marginBottom: 5,
     marginTop: 10,
   },

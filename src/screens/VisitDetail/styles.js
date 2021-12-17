@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
     marginLeft: 300,
     maxWidth: 880,
     alignSelf: 'center',
+    marginBottom: 250,
   },
   form: {
     maxWidth: 600,
@@ -65,6 +66,7 @@ export const styles = StyleSheet.create({
     marginTop: 31,
     width: '100%',
     marginRight: 10,
+    zIndex: 10,
   },
   priceWrapper: {
     justifyContent: 'flex-end',
@@ -82,5 +84,11 @@ export const styles = StyleSheet.create({
     color: THEME.COLORS.grey,
     marginLeft: 12,
     fontSize: 14,
+  },
+  flex: {
+    flex: 1,
+  },
+  p: {
+    fontSize: 20,
   },
 });

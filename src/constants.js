@@ -61,3 +61,7 @@ export const searchTypes = [
     value: 'Restaurants',
   },
 ];
+
+export const storageValues = {
+  cart: 'cart',
+};

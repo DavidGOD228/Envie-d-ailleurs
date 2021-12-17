@@ -18,6 +18,7 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
     width: '100%',
     maxWidth: 500,
+    overflow: 'hidden',
   },
   wrapper: {
     width: '100%',

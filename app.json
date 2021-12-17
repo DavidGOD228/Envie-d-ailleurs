@@ -4,10 +4,10 @@
     "slug": "envie-d-ailleurs",
     "version": "1.0.0",
     "orientation": "landscape",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/AppIcon.png",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "image": "./assets/AppIcon.png",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -18,7 +18,7 @@
     ],
 
     "ios": {
-      "buildNumber": "2",
+      "buildNumber": "4",
       "supportsTablet": true,
       "requireFullScreen": true,
       "bundleIdentifier": "envie-d-ailleurs",

@@ -12,6 +12,7 @@ import { getImageUrl } from '../../helpers/functions';
 import ImageModal from 'react-native-image-modal';
 
 const offset = 220;
+const sideBarWidth = 320;
 
 const { width } = Dimensions.get('window');
 
@@ -26,7 +27,7 @@ export const PhotoSlider = ({ images }) => {
   };
 
   useEffect(() => {
-    setIsHideArrow(images && offset * images.length < width - 320);
+    setIsHideArrow(images && offset * images.length < width - sideBarWidth);
   }, [images]);
 
   const keyExtractor = ({ index }) => {
