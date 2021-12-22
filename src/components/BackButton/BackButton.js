@@ -6,9 +6,11 @@ import { useNavigation } from '@react-navigation/native';
 
 export const BackButton = ({ isHideAll }) => {
   const navigation = useNavigation();
+
   const backHandler = () => {
     navigation.goBack();
   };
+
   return (
     <View style={isHideAll ? styles.topContainer : styles.container}>
       <TouchableOpacity onPress={backHandler}>

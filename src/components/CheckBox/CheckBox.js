@@ -4,7 +4,9 @@ import { styles } from './styles';
 
 export const CheckBox = ({ item, isChecked, onUserPress }) => {
   const { id, color, value } = item;
+
   const checkBoxPressHandler = () => onUserPress(id);
+
   return (
     <View style={styles.container}>
       <TouchableOpacity

@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   },
   content: {
     paddingTop: 50,
-    paddingLeft: 50,
+    paddingLeft: 30,
     paddingBottom: 50,
     zIndex: 2,
   },
@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingLeft: 24,
     paddingRight: 5,
-    width: 208,
+    width: 200,
     maxHeight: 50,
     shadowColor: 'black',
     shadowOpacity: 0.26,
@@ -94,5 +94,9 @@ export const styles = StyleSheet.create({
   },
   clearIcon: {
     marginLeft: -15,
+  },
+  sideHeaderWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });

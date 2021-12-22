@@ -1,7 +1,11 @@
-import * as React from 'react';
 import { API } from '../config/config';
+import axios from 'axios';
+import { METHODS } from './constants';
 
-const api = API.url;
+export const axiosInstance = axios.create({
+  baseURL: API.url,
+  timeout: 1000,
+});
 
 const setHeaders = async (contentType = 'application/json') => {
   return {
@@ -9,42 +13,37 @@ const setHeaders = async (contentType = 'application/json') => {
   };
 };
 
-export const fetcher = (endpoint, method = 'GET', data = {}) => {
+export const fetcher = (endpoint, method = 'get', data = {}) => {
   let options = {
+    url: endpoint,
     method,
     headers: {
       'Content-Type': 'application/json',
     },
   };
   try {
-    if (method !== 'GET') options['body'] = JSON.stringify(data);
-
-    return fetch(api + endpoint, options)
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => res);
+    if (method !== METHODS.get) options['data'] = JSON.stringify(data);
+    return axiosInstance(options)
+      .then((res) => res.data)
+      .catch((e) => {
+        console.warn(e);
+      });
   } catch (e) {
     console.warn(e);
   }
 };
 
 export const get = async (endpoint) => {
-  return await fetch(api + endpoint, {
+  return await axiosInstance(endpoint, {
     method: 'GET',
     headers: await setHeaders(),
-  })
-    .then((res) => res.json())
-    .then((res) => res);
+  }).then((res) => res.data);
 };
 
 export const post = async (endpoint, data) => {
-  alert('sss');
-  return await fetch(api + endpoint, {
+  return await axiosInstance(endpoint, {
     method: 'POST',
     headers: await setHeaders(),
     body: JSON.stringify(data),
-  })
-    .then((res) => res.json())
-    .then((res) => res);
+  }).then((res) => res.data);
 };

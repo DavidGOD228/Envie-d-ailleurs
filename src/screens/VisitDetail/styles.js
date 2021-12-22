@@ -91,4 +91,7 @@ export const styles = StyleSheet.create({
   p: {
     fontSize: 20,
   },
+  keyboardShowed: {
+    marginBottom: 50,
+  },
 });

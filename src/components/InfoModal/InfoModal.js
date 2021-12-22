@@ -16,18 +16,15 @@ import HTMLView from 'react-native-htmlview';
 export const InfoModal = ({ item, isVisible, setIsVisible }) => {
   const { url, title, description, id } = item;
   const navigation = useNavigation();
-  if (!isVisible) {
-    return null;
-  }
 
   const handleClose = () => {
     setIsVisible(!isVisible);
   };
-
   const handleOpenScreen = () => {
     handleClose();
     navigation.navigate(ROUTES.DETAILS, { id });
   };
+
   return (
     <Modal
       style={[styles.border]}

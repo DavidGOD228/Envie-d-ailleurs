@@ -1,7 +1,6 @@
 import React, { useContext, useLayoutEffect, useRef, useState } from 'react';
 import {
   ScrollView,
-  StatusBar,
   View,
   TouchableOpacity,
   Text,
@@ -11,7 +10,6 @@ import {
 } from 'react-native';
 import { useFormik } from 'formik';
 import { SideBar } from '../../components/SideBar/SideBar';
-import { THEME } from '../../theme';
 import { Input } from '../../components/Input/Input';
 import { visitedSchema, visitedInitial } from '../../forms';
 import { STRINGS } from '../../constants';

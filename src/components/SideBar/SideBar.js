@@ -19,6 +19,7 @@ import SideBackground from '../Svg/SideBackground';
 import Clear from '../Svg/Close';
 import AppContext from '../../context/AppContext/AppContext';
 import { THEME } from '../../theme';
+import { PasswordForComment } from './Components/PasswordForComment';
 
 export const SideBar = ({
   isHideAll,
@@ -73,13 +74,15 @@ export const SideBar = ({
     <View style={styles.container}>
       {!isHideAll && (
         <View style={[styles.content, { height: windowHeight }]}>
-          <TouchableOpacity activeOpacity={1} onPress={handleOpenCart}>
-            <View style={styles.badgeWrapper}>
-              <CartIcon />
-              <Badge count={cardIds.length} />
-            </View>
-          </TouchableOpacity>
-
+          <View style={styles.sideHeaderWrapper}>
+            <TouchableOpacity activeOpacity={1} onPress={handleOpenCart}>
+              <View style={styles.badgeWrapper}>
+                <CartIcon />
+                <Badge count={cardIds.length} />
+              </View>
+            </TouchableOpacity>
+            <PasswordForComment />
+          </View>
           <View style={styles.inputContainer}>
             {isShowClearButton && (
               <TouchableOpacity onPress={handleClearText}>

@@ -38,14 +38,14 @@ export const visitedSchema = Yup.object().shape({
 });
 
 export const visitedInitial = {
-  seller: '',
-  company: '',
-  name: '',
-  city: '',
-  address: '',
-  postal: '',
-  phone: '',
-  email: '',
-  note: '',
+  seller: 'ssdsa',
+  company: 'asdasd',
+  name: 'asdas',
+  city: 'sadasd',
+  address: 'asdsadasdafs',
+  postal: '55555',
+  phone: '23423423324',
+  email: 'dsfds@sadas.das',
+  note: 'asdsada',
   pois: [],
 };

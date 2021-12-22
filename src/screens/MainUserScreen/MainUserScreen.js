@@ -1,11 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { SafeAreaView, StatusBar, LayoutAnimation } from 'react-native';
+import { SafeAreaView, LayoutAnimation } from 'react-native';
 import Constants from 'expo-constants';
 import MapView from 'react-native-map-clustering';
 import { Marker } from 'react-native-maps';
 
 import { SideBar } from '../../components/SideBar/SideBar';
-import { THEME } from '../../theme';
 import { styles } from './styles';
 import MarkerSvg from '../../components/Svg/MarkerSvg';
 import { InfoModal } from '../../components/InfoModal/InfoModal';
@@ -109,7 +108,14 @@ export const MainUserScreen = ({ navigation }) => {
         initialRegion={INITIAL_REGION}
         edgePadding={edgePadding}
         layoutAnimationConf={LayoutAnimation.Presets.easeInEaseOut}
-        style={[styles.map, { marginTop: -Constants.statusBarHeight }]}
+        style={[
+          styles.map,
+          {
+            marginTop: Constants.statusBarHeight
+              ? -Constants.statusBarHeight
+              : 0,
+          },
+        ]}
       >
         {filteredLocations.map((item, index) => {
           return (

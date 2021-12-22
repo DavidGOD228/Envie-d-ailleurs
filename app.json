@@ -7,8 +7,8 @@
     "icon": "./assets/AppIcon.png",
     "splash": {
       "image": "./assets/AppIcon.png",
-      "resizeMode": "cover",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "contain",
+      "backgroundColor": "#ceaa8a"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -17,7 +17,7 @@
       "**/*"
     ],
     "ios": {
-      "buildNumber": "4",
+      "buildNumber": "5",
       "supportsTablet": true,
       "requireFullScreen": true,
       "bundleIdentifier": "envie-d-ailleurs",
@@ -27,10 +27,15 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/AppIcon.png",
+        "backgroundColor": "#ceaa8a"
       },
-      "package": "com.ipapp.enviedailleurs"
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDMxju0T0eVDJDaN4MJez49rUnP66GAYRI"
+        }
+      },
+      "package": "com.envie.d.ailleurs"
     },
     "web": {
       "favicon": "./assets/favicon.png"

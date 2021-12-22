@@ -1,11 +1,5 @@
 import React, { createRef, useState, useEffect } from 'react';
-import {
-  View,
-  FlatList,
-  Image,
-  TouchableOpacity,
-  Dimensions,
-} from 'react-native';
+import { View, FlatList, TouchableOpacity, Dimensions } from 'react-native';
 import { styles } from './styles';
 import LeftArrow from '../../../assets/sliderLeftArrow.svg';
 import { getImageUrl } from '../../helpers/functions';
@@ -17,8 +11,8 @@ const sideBarWidth = 320;
 const { width } = Dimensions.get('window');
 
 export const PhotoSlider = ({ images }) => {
-  const listRef = createRef(null);
-  const scroolCoordinates = createRef(null);
+  const listRef = createRef();
+  const scroolCoordinates = createRef();
   const [isHideArrow, setIsHideArrow] = useState(false);
   const renderItem = ({ item }) => {
     return (

@@ -1,5 +1,9 @@
 import { imageUrl } from '../config/config';
-import { Platform } from 'react-native';
+import { AsyncStorage, Platform } from 'react-native';
+import * as Device from 'expo-device';
+import Constants from 'expo-constants';
+import { storageKeys } from '../constants';
+
 export const parseLocations = (data) => {
   return data.map((loc) => ({
     latitude: loc.data.lat,
@@ -32,4 +36,21 @@ export const getMarkerColor = (type) => {
     default:
       return '#5bb500';
   }
+};
+
+export const setCartsToStorage = (ids) => {
+  const value = ids ? ids : [];
+  AsyncStorage.setItem(storageKeys.cart, JSON.stringify(value));
+};
+
+export const getCartsFromStorage = async () => {
+  return await AsyncStorage.getItem(storageKeys.cart);
+};
+
+export const getUniqueId = () => {
+  let id = Constants.deviceId;
+  if (!id) {
+    id = Device.deviceName;
+  }
+  return id;
 };

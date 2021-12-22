@@ -28,6 +28,8 @@ export const STRINGS = {
     register: 'ENREGISTRER',
     apply: 'EN SAVOIR PLUS',
     success: 'Votre demande a bien été transmise',
+    commentTitle: 'commentare sur le POI',
+    envoyer: 'Envoyer',
   },
 };
 
@@ -62,6 +64,6 @@ export const searchTypes = [
   },
 ];
 
-export const storageValues = {
+export const storageKeys = {
   cart: 'cart',
 };

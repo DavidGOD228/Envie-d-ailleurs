@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { AsyncStorage } from 'react-native';
-import { getPoi, order } from '../../api/actions';
-import { parseLocations } from '../../helpers/functions';
-import { Alert } from 'react-native-web';
-import { storageValues, STRINGS } from '../../constants';
+import { Alert } from 'react-native';
+import { checkCommentPassword, getPoi, order } from '../../api/actions';
+import {
+  getCartsFromStorage,
+  getUniqueId,
+  parseLocations,
+  setCartsToStorage,
+} from '../../helpers/functions';
+import { STRINGS } from '../../constants';
 
 const AppContext = React.createContext({});
 
@@ -12,14 +16,19 @@ export const AppContextProvider = (props) => {
   const [cardIds, setCardIds] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [checkboxChecked, setCheckboxChecked] = useState([]);
+  const [isCommentUnlocked, setIsCommentUnlocked] = useState(true);
 
   useEffect(() => {
-    getLocations();
-    initOrderCount();
+    getLocations().catch((e) => {
+      console.warn(e);
+    });
+    initOrderCount().catch((e) => {
+      console.warn(e);
+    });
   }, []);
 
   const initOrderCount = async () => {
-    const cart = await AsyncStorage.getItem(storageValues.cart);
+    const cart = await getCartsFromStorage();
     if (cart) {
       try {
         setCardIds(JSON.parse(cart));
@@ -58,7 +67,7 @@ export const AppContextProvider = (props) => {
       showSuccessAlert();
       setCardIds([]);
       setCheckboxChecked([]);
-      AsyncStorage.setItem(storageValues.cart, JSON.stringify([]));
+      setCartsToStorage([]);
       return true;
     }
     return false;
@@ -71,12 +80,29 @@ export const AppContextProvider = (props) => {
   const removeLocationsFromSelected = (id) => {
     cardIds.splice(id, 1);
     setCardIds([...cardIds]);
+    setCartsToStorage(cardIds);
   };
 
   const handleAddToCart = (id) => {
     setCardIds([...cardIds, id]);
   };
 
+  const handleUnlockComment = async (text) => {
+    setIsLoading(true);
+    const res = await checkCommentPassword(text);
+    setIsLoading(false);
+    if (res?.code === 200) {
+      setIsCommentUnlocked(!isCommentUnlocked);
+    } else {
+      Alert.alert('Code erroné');
+      setIsCommentUnlocked(false);
+    }
+  };
+
+  const uploadComment = () => {
+    const deviceId = getUniqueId();
+    Alert.alert(deviceId);
+  };
   return (
     <AppContext.Provider
       value={{
@@ -90,6 +116,9 @@ export const AppContextProvider = (props) => {
         setCheckboxChecked,
         handleAddToCart,
         removeLocationsFromSelected,
+        isCommentUnlocked,
+        handleUnlockComment,
+        uploadComment,
       }}
     >
       {props.children}

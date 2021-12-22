@@ -13,7 +13,7 @@ export const Badge = ({
   }
 
   return (
-    <View style={[styles.container, { backgroundColor: backgroundColor }]}>
+    <View style={[styles.container, { backgroundColor }]}>
       <Text style={[styles.text, { color: textColor }]}>{count}</Text>
     </View>
   );

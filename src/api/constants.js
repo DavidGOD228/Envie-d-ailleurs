@@ -1,6 +1,6 @@
 export const METHODS = {
-  get: 'GET',
-  post: 'POST',
+  get: 'get',
+  post: 'post',
 };
 
 export const API_ROUTES = {
