@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
-import { checkCommentPassword, getPoi, order } from '../../api/actions';
+import { getCommentForPoi, getPoi, order } from '../../api/actions';
 import {
   getCartsFromStorage,
-  getUniqueId,
   parseLocations,
   setCartsToStorage,
+  showSuccessAlert,
 } from '../../helpers/functions';
-import { STRINGS } from '../../constants';
 
 const AppContext = React.createContext({});
 
@@ -16,7 +15,7 @@ export const AppContextProvider = (props) => {
   const [cardIds, setCardIds] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [checkboxChecked, setCheckboxChecked] = useState([]);
-  const [isCommentUnlocked, setIsCommentUnlocked] = useState(true);
+  const [isCommentUnlocked, setIsCommentUnlocked] = useState(false);
 
   useEffect(() => {
     getLocations().catch((e) => {
@@ -73,10 +72,6 @@ export const AppContextProvider = (props) => {
     return false;
   };
 
-  const showSuccessAlert = () => {
-    Alert.alert(STRINGS.VISITED.success);
-  };
-
   const removeLocationsFromSelected = (id) => {
     cardIds.splice(id, 1);
     setCardIds([...cardIds]);
@@ -88,10 +83,7 @@ export const AppContextProvider = (props) => {
   };
 
   const handleUnlockComment = async (text) => {
-    setIsLoading(true);
-    const res = await checkCommentPassword(text);
-    setIsLoading(false);
-    if (res?.code === 200) {
+    if (text === '5362') {
       setIsCommentUnlocked(!isCommentUnlocked);
     } else {
       Alert.alert('Code erroné');
@@ -99,9 +91,8 @@ export const AppContextProvider = (props) => {
     }
   };
 
-  const uploadComment = () => {
-    const deviceId = getUniqueId();
-    Alert.alert(deviceId);
+  const getComment = async (id) => {
+    return getCommentForPoi({ poi_id: id, password: '5362' });
   };
   return (
     <AppContext.Provider
@@ -118,7 +109,7 @@ export const AppContextProvider = (props) => {
         removeLocationsFromSelected,
         isCommentUnlocked,
         handleUnlockComment,
-        uploadComment,
+        getComment,
       }}
     >
       {props.children}

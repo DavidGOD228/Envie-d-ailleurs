@@ -8,3 +8,6 @@ export const order = (data) =>
 
 export const checkCommentPassword = (data) =>
   fetcher(API_ROUTES.creteOrder, METHODS.post, data);
+
+export const getCommentForPoi = (data) =>
+  fetcher(API_ROUTES.getComment, METHODS.post, data);

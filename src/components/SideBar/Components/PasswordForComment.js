@@ -16,7 +16,7 @@ export const PasswordForComment = () => {
   };
 
   const handleSendPassword = async () => {
-    await handleUnlockComment('');
+    await handleUnlockComment(text);
     setText('');
     setIsInputShow(false);
   };
@@ -41,6 +41,7 @@ export const PasswordForComment = () => {
             onChangeText={handleTextChange}
             placeholder={'0000'}
             placeholderTextColor={THEME.COLORS.mainColor}
+            keyboardType={'numeric'}
           />
           <Text style={styles.go} onPress={handleSendPassword}>
             Go

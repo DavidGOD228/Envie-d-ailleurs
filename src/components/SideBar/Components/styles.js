@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { THEME } from '../../../theme';
+import { isAndroid } from '../../../helpers/functions';
 
 export const styles = StyleSheet.create({
   container: {
@@ -11,7 +12,7 @@ export const styles = StyleSheet.create({
     right: 0,
     flexDirection: 'row',
     overflow: 'hidden',
-    marginRight: -75,
+    marginRight: isAndroid ? -25 : -75,
     marginLeft: 10,
     justifyContent: 'space-between',
   },
@@ -32,6 +33,7 @@ export const styles = StyleSheet.create({
   go: {
     color: THEME.COLORS.mainColor,
     fontSize: 20,
+    paddingLeft: isAndroid ? 0 : 15,
   },
   padlock: {
     width: 50,

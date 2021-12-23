@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState, useContext, useRef } from 'react';
+import React, { useLayoutEffect, useState, useContext, useEffect } from 'react';
 import { Text, ScrollView, View, KeyboardAvoidingView } from 'react-native';
 import HTMLView from 'react-native-htmlview';
 import { SideBar } from '../../components/SideBar/SideBar';
@@ -12,9 +12,10 @@ import { CommentInput } from '../../components/CommentInput/CommentInput';
 import { useKeyboard } from '../../hooks/useKeyboard';
 
 export const VisitDetail = ({ navigation, route }) => {
-  const scrollRef = useRef(null);
-  const { getLocationById, isCommentUnlocked } = useContext(AppContext);
+  const { getLocationById, isCommentUnlocked, getComment } =
+    useContext(AppContext);
   const [location, setLocation] = useState({});
+  const [comment, setComment] = useState('');
   const isKeyboardOpen = useKeyboard();
   const { id } = route.params;
 
@@ -22,13 +23,22 @@ export const VisitDetail = ({ navigation, route }) => {
     const item = getLocationById(id);
     const images = getImages(item);
     setLocation({ ...item, images });
+    checkComment(item.id);
   }, []);
 
-  const scrollToBottom = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollToEnd({ animated: true });
+  useEffect(() => {
+    if (location) {
+      checkComment(location.id);
+    }
+  }, [isCommentUnlocked]);
+
+  const checkComment = async (id) => {
+    if (isCommentUnlocked && id) {
+      const comment = await getComment(id);
+      setComment(comment?.comment);
     }
   };
+
   return (
     <View style={{ flex: 1 }}>
       <KeyboardAvoidingView
@@ -36,7 +46,7 @@ export const VisitDetail = ({ navigation, route }) => {
         style={{ flex: 1 }}
       >
         <SideBar navigation={navigation} />
-        <ScrollView style={styles.container} ref={scrollRef}>
+        <ScrollView style={styles.container}>
           <View
             style={[styles.wrapper, isKeyboardOpen && styles.keyboardShowed]}
           >
@@ -54,8 +64,8 @@ export const VisitDetail = ({ navigation, route }) => {
             <View style={styles.description}>
               <HTMLView value={location.description} stylesheet={styles} />
             </View>
-            {isCommentUnlocked && (
-              <CommentInput scrollToBottom={scrollToBottom} />
+            {!!comment && isCommentUnlocked && (
+              <CommentInput comment={comment} />
             )}
           </View>
           <AddButton id={location.id} />

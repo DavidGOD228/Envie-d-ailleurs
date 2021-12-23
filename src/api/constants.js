@@ -6,4 +6,5 @@ export const METHODS = {
 export const API_ROUTES = {
   getPoi: 'poi/get',
   creteOrder: 'order/create',
+  getComment: 'poi/get-comment',
 };

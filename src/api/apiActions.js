@@ -4,7 +4,7 @@ import { METHODS } from './constants';
 
 export const axiosInstance = axios.create({
   baseURL: API.url,
-  timeout: 1000,
+  timeout: 5000,
 });
 
 const setHeaders = async (contentType = 'application/json') => {

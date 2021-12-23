@@ -1,8 +1,8 @@
 import { imageUrl } from '../config/config';
-import { AsyncStorage, Platform } from 'react-native';
+import { Alert, AsyncStorage, Platform } from 'react-native';
 import * as Device from 'expo-device';
 import Constants from 'expo-constants';
-import { storageKeys } from '../constants';
+import { storageKeys, STRINGS } from '../constants';
 
 export const parseLocations = (data) => {
   return data.map((loc) => ({
@@ -53,4 +53,8 @@ export const getUniqueId = () => {
     id = Device.deviceName;
   }
   return id;
+};
+
+export const showSuccessAlert = () => {
+  Alert.alert(STRINGS.VISITED.success);
 };
