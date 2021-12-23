@@ -78,7 +78,7 @@ export const styles = StyleSheet.create({
   },
   priceTitle: {
     color: THEME.COLORS.primary,
-    fontSize: 14,
+    fontSize: 20,
   },
   price: {
     color: THEME.COLORS.grey,

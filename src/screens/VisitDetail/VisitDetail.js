@@ -9,14 +9,12 @@ import AppContext from '../../context/AppContext/AppContext';
 import { getImages, isAndroid } from '../../helpers/functions';
 import { styles } from './styles';
 import { CommentInput } from '../../components/CommentInput/CommentInput';
-import { useKeyboard } from '../../hooks/useKeyboard';
 
 export const VisitDetail = ({ navigation, route }) => {
   const { getLocationById, isCommentUnlocked, getComment } =
     useContext(AppContext);
   const [location, setLocation] = useState({});
   const [comment, setComment] = useState('');
-  const isKeyboardOpen = useKeyboard();
   const { id } = route.params;
 
   useLayoutEffect(() => {
@@ -47,9 +45,7 @@ export const VisitDetail = ({ navigation, route }) => {
       >
         <SideBar navigation={navigation} />
         <ScrollView style={styles.container}>
-          <View
-            style={[styles.wrapper, isKeyboardOpen && styles.keyboardShowed]}
-          >
+          <View style={styles.wrapper}>
             <Text style={styles.title}>{location.name}</Text>
 
             {!!location?.images?.length && (
@@ -58,8 +54,7 @@ export const VisitDetail = ({ navigation, route }) => {
               </View>
             )}
             <View style={styles.priceWrapper}>
-              <Text style={styles.priceTitle}>Tarif</Text>
-              <Text style={styles.price}>À partir de 25€/ personne</Text>
+              <Text style={styles.priceTitle}>{location.tariff}</Text>
             </View>
             <View style={styles.description}>
               <HTMLView value={location.description} stylesheet={styles} />
