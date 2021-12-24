@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     minHeight: 60,
   },
   input: {
-    height: 160,
+    fontSize: 18,
   },
   title: {
     fontSize: 20,
