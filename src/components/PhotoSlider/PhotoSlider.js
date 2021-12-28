@@ -1,9 +1,15 @@
 import React, { createRef, useState, useEffect } from 'react';
-import { View, FlatList, TouchableOpacity, Dimensions } from 'react-native';
+import {
+  View,
+  FlatList,
+  TouchableOpacity,
+  Dimensions,
+  Image,
+} from 'react-native';
 import { styles } from './styles';
 import LeftArrow from '../../../assets/sliderLeftArrow.svg';
 import { getImageUrl } from '../../helpers/functions';
-import ImageModal from 'react-native-image-modal';
+import ImageView from 'react-native-image-viewing';
 
 const offset = 220;
 const sideBarWidth = 320;
@@ -14,9 +20,22 @@ export const PhotoSlider = ({ images }) => {
   const listRef = createRef();
   const scroolCoordinates = createRef();
   const [isHideArrow, setIsHideArrow] = useState(false);
+  const [visible, setIsVisible] = useState(false);
+  const [sliderImages, setSliderImage] = useState(null);
+
+  const handleOpenImage = (uri) => {
+    setSliderImage([{ uri }]);
+    setIsVisible(true);
+  };
   const renderItem = ({ item }) => {
     return (
-      <ImageModal style={styles.image} source={{ uri: getImageUrl(item) }} />
+      <TouchableOpacity onPress={() => handleOpenImage(getImageUrl(item))}>
+        <Image
+          style={styles.image}
+          modalImageStyle={styles.image}
+          source={{ uri: getImageUrl(item) }}
+        />
+      </TouchableOpacity>
     );
   };
 
@@ -79,6 +98,12 @@ export const PhotoSlider = ({ images }) => {
           style={[styles.arrow, styles.rightArrow, isHideArrow && styles.hide]}
         />
       </TouchableOpacity>
+      <ImageView
+        images={sliderImages}
+        imageIndex={0}
+        visible={visible}
+        onRequestClose={() => setIsVisible(false)}
+      />
     </View>
   );
 };
