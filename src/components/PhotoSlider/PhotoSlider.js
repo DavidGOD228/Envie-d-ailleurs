@@ -9,22 +9,19 @@ import {
 import { styles } from './styles';
 import LeftArrow from '../../../assets/sliderLeftArrow.svg';
 import { getImageUrl } from '../../helpers/functions';
-import ImageView from 'react-native-image-viewing';
 
 const offset = 220;
 const sideBarWidth = 320;
 
 const { width } = Dimensions.get('window');
 
-export const PhotoSlider = ({ images }) => {
+export const PhotoSlider = ({ images, setIsVisible, setSliderImage }) => {
   const listRef = createRef();
   const scroolCoordinates = createRef();
   const [isHideArrow, setIsHideArrow] = useState(false);
-  const [visible, setIsVisible] = useState(false);
-  const [sliderImages, setSliderImage] = useState(null);
 
   const handleOpenImage = (uri) => {
-    setSliderImage([{ uri }]);
+    setSliderImage(uri);
     setIsVisible(true);
   };
   const renderItem = ({ item }) => {
@@ -79,31 +76,31 @@ export const PhotoSlider = ({ images }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={handleLeft}>
-        <LeftArrow style={[styles.arrow, isHideArrow && styles.hide]} />
-      </TouchableOpacity>
-      <FlatList
-        ref={listRef}
-        horizontal
-        data={images}
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-        showsHorizontalScrollIndicator={false}
-        onScrollEndDrag={handleScroll}
-        con
-      />
-      <TouchableOpacity onPress={handleRight}>
-        <LeftArrow
-          style={[styles.arrow, styles.rightArrow, isHideArrow && styles.hide]}
+    <>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={handleLeft}>
+          <LeftArrow style={[styles.arrow, isHideArrow && styles.hide]} />
+        </TouchableOpacity>
+        <FlatList
+          ref={listRef}
+          horizontal
+          data={images}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+          showsHorizontalScrollIndicator={false}
+          onScrollEndDrag={handleScroll}
+          con
         />
-      </TouchableOpacity>
-      <ImageView
-        images={sliderImages}
-        imageIndex={0}
-        visible={visible}
-        onRequestClose={() => setIsVisible(false)}
-      />
-    </View>
+        <TouchableOpacity onPress={handleRight}>
+          <LeftArrow
+            style={[
+              styles.arrow,
+              styles.rightArrow,
+              isHideArrow && styles.hide,
+            ]}
+          />
+        </TouchableOpacity>
+      </View>
+    </>
   );
 };

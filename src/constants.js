@@ -28,7 +28,7 @@ export const STRINGS = {
     register: 'ENREGISTRER',
     apply: 'EN SAVOIR PLUS',
     success: 'Votre demande a bien été transmise',
-    commentTitle: 'commentare sur le POI',
+    commentTitle: 'commentaire sur le POI',
     envoyer: 'Envoyer',
   },
 };

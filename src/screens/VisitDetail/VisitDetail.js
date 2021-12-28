@@ -6,11 +6,14 @@ import { BackButton } from '../../components/BackButton/BackButton';
 import { PhotoSlider } from '../../components/PhotoSlider/PhotoSlider';
 import { AddButton } from '../../components/AddButton/AddButton';
 import AppContext from '../../context/AppContext/AppContext';
-import { getImages, isAndroid } from '../../helpers/functions';
+import { getImages, getImageUrl, isAndroid } from '../../helpers/functions';
 import { styles } from './styles';
 import { CommentInput } from '../../components/CommentInput/CommentInput';
+import { ImageModal } from '../../components/ImageModal/ImageModal';
 
 export const VisitDetail = ({ navigation, route }) => {
+  const [visible, setIsVisible] = useState(false);
+  const [sliderImages, setSliderImage] = useState(null);
   const { getLocationById, isCommentUnlocked, getComment } =
     useContext(AppContext);
   const [location, setLocation] = useState({});
@@ -37,6 +40,10 @@ export const VisitDetail = ({ navigation, route }) => {
     }
   };
 
+  const handleImageModalClose = () => {
+    setIsVisible(false);
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <KeyboardAvoidingView
@@ -50,7 +57,11 @@ export const VisitDetail = ({ navigation, route }) => {
 
             {!!location?.images?.length && (
               <View>
-                <PhotoSlider images={location.images} />
+                <PhotoSlider
+                  images={location.images}
+                  setSliderImage={setSliderImage}
+                  setIsVisible={setIsVisible}
+                />
               </View>
             )}
             <View style={styles.priceWrapper}>
@@ -67,6 +78,9 @@ export const VisitDetail = ({ navigation, route }) => {
         </ScrollView>
       </KeyboardAvoidingView>
       <BackButton />
+      {visible && (
+        <ImageModal uri={sliderImages} handleClose={handleImageModalClose} />
+      )}
     </View>
   );
 };

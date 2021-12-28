@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   image: {
     backgroundColor: 'red',
-    height: 220,
   },
   imageWrapper: {
     flexWrap: 'wrap',

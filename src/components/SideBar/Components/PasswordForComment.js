@@ -9,10 +9,18 @@ import { OverlayLoader } from '../../OverlayLoader/OverlayLoader';
 export const PasswordForComment = () => {
   const [isInputShow, setIsInputShow] = useState(false);
   const [text, setText] = useState('');
-  const { isLoading, handleUnlockComment, isCommentUnlocked } =
-    useContext(AppContext);
+  const {
+    isLoading,
+    handleUnlockComment,
+    isCommentUnlocked,
+    setIsCommentUnlocked,
+  } = useContext(AppContext);
   const handlePress = () => {
-    setIsInputShow(true);
+    if (!isCommentUnlocked) {
+      setIsInputShow(true);
+    } else {
+      setIsCommentUnlocked(false);
+    }
   };
 
   const handleSendPassword = async () => {

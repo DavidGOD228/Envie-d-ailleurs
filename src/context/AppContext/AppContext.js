@@ -110,6 +110,7 @@ export const AppContextProvider = (props) => {
         isCommentUnlocked,
         handleUnlockComment,
         getComment,
+        setIsCommentUnlocked,
       }}
     >
       {props.children}

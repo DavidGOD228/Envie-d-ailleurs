@@ -4,14 +4,16 @@ import { styles } from './styles';
 
 export const ScalableImage = ({ url }) => {
   const [width, setWidth] = useState(200);
-  Image.getSize(url, (width) => {
+  const [height, setHeight] = useState(200);
+  Image.getSize(url, (width, height) => {
     setWidth(width);
+    setHeight(height);
   });
   return (
     <Image
-      style={[styles.image, { width }]}
+      style={[styles.image, { width, height }]}
       resizeMode={'cover'}
-      source={{ uri: url, width }}
+      source={{ uri: url, width, height }}
     />
   );
 };
