@@ -61,6 +61,10 @@ export const VisitesScreen = ({ navigation }) => {
     }
   };
 
+  const handleRemovePoi = (index) => {
+    Alert.alert('Poi effacé avec succès');
+    removeLocationsFromSelected(index);
+  };
   return (
     <View>
       <SideBar navigation={navigation} isHideAll />
@@ -80,7 +84,7 @@ export const VisitesScreen = ({ navigation }) => {
                       title={location.name}
                       description={location.description}
                       image={location.image_first}
-                      onRemove={() => removeLocationsFromSelected(index)}
+                      onRemove={() => handleRemovePoi(index)}
                     />
                   );
                 }
